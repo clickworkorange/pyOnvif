@@ -120,6 +120,7 @@ class OnvifCam():
       soapmsg=self.insertInEnvelope(fullmsg) 
     else:
       soapmsg=self.insertInEnvelope(self.insertInBody(bmsg))
+    self.conn.connect()
     self.conn.request("POST", self.cpath, soapmsg)
     resp = self.conn.getresponse().read()
     return resp
